@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Scroll Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f9f9f9;
+    }
+
+    /* ✳️ القسم الذي يحتوي الصور */
+    .image-section {
+      display: flex;
+      overflow-x: auto;           
+      scroll-snap-type: x mandatory; /* يجعل التمرير سلس */
+      -webkit-overflow-scrolling: touch; /* تحسين التمرير للموبايل */
+      gap: 12px;
+      padding: 16px;
+      scroll-behavior: smooth;
+    }
+
+    /* إخفاء شريط التمرير */
+    .image-section::-webkit-scrollbar {
+      display: none;
+    }
+    .image-section {
+      -ms-overflow-style: none;  /* IE و Edge */
+      scrollbar-width: none;     /* Firefox */
+    }
+
+    /* ✳️ تنسيق الصور */
+    .image-section img {
+      width: 80%;             /* اجعلها مناسبة لحجم الموبايل */
+      max-width: 300px;       /* حد أقصى على الشاشات الكبيرة */
+      border-radius: 12px;
+      flex-shrink: 0;         /* لا تنكمش */
+      scroll-snap-align: start; /* كل صورة تتوقف عند حافتها */
+      object-fit: cover;
+    }
+
+    /* ✳️ مثال: محتوى الصفحة */
+    .content {
+      padding: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h2>معرض الصور</h2>
+    <p>اسحب يمين ويسار لتشاهد الصور 👇</p>
+  </div>
+
+  <section class="image-section">
+    <img src="https://picsum.photos/id/1015/600/400" alt="">
+    <img src="https://picsum.photos/id/1024/600/400" alt="">
+    <img src="https://picsum.photos/id/1035/600/400" alt="">
+    <img src="https://picsum.photos/id/1041/600/400" alt="">
+  </section>
+
+  <div class="content">
+    <p>بقية الصفحة تبقى ثابتة، فقط القسم أعلاه يتم تمريره أفقيًا.</p>
+  </div>
+
+</body>
+</html>
